@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Registration Form</title>
+  <style>
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .message {
+      margin-top: 10px;
+      color: #4CAF50;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>User Registration Form</h2>
+    <form id="registrationForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+      <br>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" required>
+      <br>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+      <br>
+
+      <label for="phoneNumber">Phone Number:</label>
+      <select id="countryCode">
+        <option value="+1">+1</option>
+        <option value="+91">+91</option>
+        <option value="+44">+44</option>
+        <!-- Add more country codes as needed -->
+      </select>
+      <input type="text" id="phoneNumber" pattern="[0-9]{10}" required>
+      <br>
+
+      <label for="sex">Sex:</label>
+      <label><input type="radio" name="sex" value="male"> Male</label>
+      <label><input type="radio" name="sex" value="female"> Female</label>
+      <br>
+
+      <label for="dobDay">Date of Birth:</label>
+      <select id="dobDay"></select>
+      <select id="dobMonth"></select>
+      <select id="dobYear"></select>
+      <br>
+
+      <label for="languages">Languages Known:</label>
+      <label><input type="checkbox" name="languages" value="english"> English</label>
+      <label><input type="checkbox" name="languages" value="marathi"> Marathi</label>
+      <label><input type="checkbox" name="languages" value="hindi"> Hindi</label>
+      <label><input type="checkbox" name="languages" value="tamil"> Tamil</label>
+      <br>
+
+      <label for="address">Address:</label>
+      <textarea id="address" rows="4" required></textarea>
+      <br>
+
+      <button type="submit">Register</button>
+    </form>
+    <p class="message" id="successMessage"></p>
+  </div>
+
+  <script>
+    var daySelect = document.getElementById("dobDay");
+    var monthSelect = document.getElementById("dobMonth");
+    var yearSelect = document.getElementById("dobYear");
+    var successMessage = document.getElementById("successMessage");
+
+    // Populate day select box
+    for (var i = 1; i <= 31; i++) {
+      var option = document.createElement("option");
+      option.text = i;
+      daySelect.add(option);
+    }
+
+    // Populate month select box
+    var months = [
+      "January", "February", "March", "April", "May", "June", "July",
+      "August", "September", "October", "November", "December"
+    ];
+    for (var j = 0; j < months.length; j++) {
+      var option = document.createElement("option");
+      option.text = months[j];
+      monthSelect.add(option);
+    }
+
+    // Populate year select box
+    var currentYear = new Date().getFullYear();
+    var startYear = currentYear - 100;
+    for (var k = currentYear; k >= startYear; k--) {
+      var option = document.createElement("option");
+      option.text = k;
+      yearSelect.add(option);
+    }
+
+    // Form submission
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var name = document.getElementById("name").value;
+      var password = document.getElementById("password").value;
+      var email = document.getElementById("email").value;
+      var countryCode = document.getElementById("countryCode").value;
+      var phoneNumber = document.getElementById("phoneNumber").value;
+      var sex = document.querySelector('input[name="sex"]:checked').value;
+      var day = daySelect.value;
+      var month = monthSelect.value;
+      var year = yearSelect.value;
+      var languagesKnown = [];
+      var languageCheckboxes = document.querySelectorAll('input[name="languages"]:checked');
+      for (var l = 0; l < languageCheckboxes.length; l++) {
+        languagesKnown.push(languageCheckboxes[l].value);
+      }
+      var address = document.getElementById("address").value;
+
+      var dateOfBirth = day + " " + month + " " + year;
+
+      // Display registration details
+      var registrationDetails = "Name: " + name + "<br>" +
+                                "Password: " + password + "<br>" +
+                                "Email: " + email + "<br>" +
+                                "Phone Number: " + countryCode + " " + phoneNumber + "<br>" +
+                                "Sex: " + sex + "<br>" +
+                                "Date of Birth: " + dateOfBirth + "<br>" +
+                                "Languages Known: " + languagesKnown.join(", ") + "<br>" +
+                                "Address: " + address;
+      successMessage.innerHTML = "Registered successfully! <br><br>" + registrationDetails;
+    });
+  </script>
+</body>
+</html>
