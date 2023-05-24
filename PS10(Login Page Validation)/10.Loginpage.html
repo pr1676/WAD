@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      max-width: 400px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
+  <script>
+    function validateForm() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      var isValid = true;
+
+      // Validate User Name
+      if (!/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,}/.test(username)) {
+        document.getElementById("usernameError").innerText = "User Name should contain at least one uppercase letter, one lowercase letter, one special character, one number, and have a minimum length of 8 characters.";
+        isValid = false;
+      } else {
+        document.getElementById("usernameError").innerText = "";
+      }
+
+      // Validate Password
+      if (!/(?=.*[A-Z])(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,}/.test(password)) {
+        document.getElementById("passwordError").innerText = "Password should contain at least one uppercase letter, one special character, and have a minimum length of 8 characters.";
+        isValid = false;
+      } else {
+        document.getElementById("passwordError").innerText = "";
+      }
+
+      return isValid;
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Login Page</h1>
+    <form onsubmit="return validateForm()">
+      <label for="username">User Name:</label>
+      <input type="text" id="username" name="username" required>
+      <span id="usernameError" class="error"></span>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <span id="passwordError" class="error"></span>
+
+      <input type="submit" value="Login">
+    </form>
+  </div>
+</body>
+</html>
