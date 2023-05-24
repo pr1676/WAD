@@ -1,0 +1,51 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Cookie Example</title>
+  <script>
+    function createCookie() {
+      var value = document.getElementById("inputValue").value;
+      
+      // Set the cookie with the value
+      document.cookie = "my_cookie=" + value + "; expires=3600";
+      
+      alert("Cookie created successfully!");
+    }
+    
+    function retrieveCookie() {
+      var cookies = document.cookie.split(';');
+      
+      // Find the cookie with the name "my_cookie"
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        if (cookie.indexOf("my_cookie=") === 0) {
+          var cookieValue = cookie.substring("my_cookie=".length);
+          alert("Retrieved Cookie Value: " + cookieValue);
+          return;
+        }
+      }
+      
+      alert("Cookie not found.");
+    }
+  </script>
+  <style>
+    .center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+  }
+  
+  </style>
+</head>
+<body>
+  <h2 style="color: red;text-align: center;">Cookie Example</h2>
+  <div class="center">
+    <label" for="inputValue">Enter a value:</label><br>
+    <br><input type="text" id="inputValue"><br>
+    <br><button onclick="createCookie()">Create Cookie</button>
+   
+    <button onclick="retrieveCookie()">Retrieve Cookie</button>
+  </div>
+</body>
+</html>
