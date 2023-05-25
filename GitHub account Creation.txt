@@ -1,0 +1,84 @@
+1. Sign up for a GitHub account:
+
+	Go to the GitHub website (https://github.com).
+	Click on the "Sign up" button.
+	Follow the instructions to create your account.
+
+2. Install Git:
+
+	Download and install Git from the official website (https://git-scm.com/downloads).
+	Follow the installation instructions for your operating system.
+
+3. Set up Git:
+
+	Open a command prompt or terminal.
+	Configure your name and email address by running the following commands (replace Your 	Name and your.email@example.com with your own information):
+
+	- git config --global user.name "Your Name"
+ 	- git config --global user.email "your.email@example.com"
+
+4. Create a new repository on GitHub:
+
+	Log in to your GitHub account.
+	Click on the "+" button on the top-right corner of the GitHub page and select "New 	repository".
+	Provide a repository name and other optional details.
+	Click on "Create repository" to create the repository.
+
+5. Initialize a new Git repository:
+
+	Open a command prompt or terminal.
+	Navigate to your project directory using the 'cd' command.
+	Run the following command to initialize a new Git repository:
+
+	- git init
+
+6. Add your project files to the repository:
+
+	Run the following command to add all the files in your project directory to the Git 	repository:
+
+	- git add .
+
+7. Commit your changes:
+
+	Run the following command to commit your changes to the repository (replace 'Your 	commit message' with an appropriate message describing your changes):
+
+	- git commit -m "Your commit message"
+
+8. Connect your local repository to the GitHub remote repository:
+
+	Go to your GitHub repository page and copy the repository's remote URL.
+	Run the following command to add the remote repository (replace remote-url with the 	URL you copied):
+
+	- git remote add origin remote-url
+
+9. Push your code to GitHub:
+
+	Run the following command to push your code to the GitHub repository:
+
+	-git push -u origin master
+
+10.Enter your GitHub username and password when prompted.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
